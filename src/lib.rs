@@ -1,9 +1,8 @@
-#[macro_use] extern crate assert_float_eq;
-extern crate hashbrown;
+#[macro_use]
+extern crate assert_float_eq;
 
+use ahash::AHashSet as HashSet;
 use core::hash::Hash;
-use hashbrown::HashSet;
-
 
 /**
     Calculates Sørensen–Dice coefficient
@@ -43,7 +42,6 @@ pub fn distance<T: Sized + Hash + Eq>(x: &[T], y: &[T]) -> f64 {
 
     len as f64 / (nx as f64 + ny as f64)
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -88,10 +86,9 @@ mod tests {
 
     #[test]
     fn sorensen_distance_huge_test() {
-        let str1 = (0..100000).map(|_| { 'a' }).collect::<Vec<char>>();
-        let str2 = (0..100000).map(|_| { 'a' }).collect::<Vec<char>>();
+        let str1 = (0..100000).map(|_| 'a').collect::<Vec<char>>();
+        let str2 = (0..100000).map(|_| 'a').collect::<Vec<char>>();
         let result = distance(&str1, &str2);
         expect_float_relative_eq!(result, 1f64, 0.00003).ok();
     }
-
 }
