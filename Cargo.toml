@@ -9,7 +9,7 @@ license = "GPL-3.0-or-later"
 license-file = "LICENSE"
 
 [dependencies]
-hashbrown = "0.12.3"
+hashbrown = "0.14.3"
 assert_float_eq = "1.1.3"
 
 [dev-dependencies]
